@@ -8,8 +8,8 @@ public class BackgroundTiler : MonoBehaviour
 	public tk2dSprite 	tile1;
 	public Vector3		scrollingSpeed;
 
-	private Vector3 m_startingPoint;
-	private float m_tilingPoint;
+	private Vector3 	m_startingPoint;
+	private float 		m_tilingPoint;
 
 	// Use this for initialization
 	void Start () 
@@ -18,7 +18,7 @@ public class BackgroundTiler : MonoBehaviour
 		tile1.gameObject.transform.position = tilePos1;
 
 		m_startingPoint = tiles.gameObject.transform.position;
-		m_tilingPoint = -1.0f * tile0.GetBounds().extents.x * 2.0f;
+		m_tilingPoint = gameObject.transform.position.x + (-1.0f * tile0.GetBounds().extents.x * 2.0f);
 	}
 	
 	// Update is called once per frame
