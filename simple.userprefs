@@ -1,10 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RotateOnVelocity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RockPair.cs">
     <Files>
-      <File FileName="Assets\Scripts\Bird.cs" Line="25" Column="5" />
-      <File FileName="Assets\Scripts\RotateOnVelocity.cs" Line="23" Column="16" />
-      <File FileName="Assets\Scripts\BackgroundTiler.cs" Line="27" Column="57" />
+      <File FileName="Assets\Scripts\BackgroundTiler.cs" Line="27" Column="9" />
+      <File FileName="Assets\Scripts\Bird.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RotateOnVelocity.cs" Line="23" Column="2" />
+      <File FileName="Assets\Scripts\RocksManager.cs" Line="11" Column="33" />
+      <File FileName="Assets\Scripts\RockPair.cs" Line="29" Column="1" />
+      <File FileName="Assets\Scripts\Scroller.cs" Line="17" Column="7" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
