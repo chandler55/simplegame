@@ -17,7 +17,10 @@ public class RotateOnVelocity : MonoBehaviour
 	
 	void Update () 
 	{
-		m_rotation = Mathf.SmoothDampAngle( m_rotation, rigidbody2D.velocity.y, ref m_currentVelocity, smoothingTime );
-		transform.rotation = Quaternion.Euler( new Vector3( 0, 0, m_rotation ) );
+		if ( rigidbody2D )
+		{
+			m_rotation = Mathf.SmoothDampAngle( m_rotation, rigidbody2D.velocity.y, ref m_currentVelocity, smoothingTime );
+			transform.rotation = Quaternion.Euler( new Vector3( 0, 0, m_rotation ) );
+		}
 	}
 }

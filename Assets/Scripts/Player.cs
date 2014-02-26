@@ -1,41 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : MonoBehaviour 
+public class Player : Singleton<Player> 
 {
-	public float jumpForce;
+	public Transform 		topBoundary;
+
+	private Vector3 		m_currentVelocity;
+	
+	private	bool			m_gameStarted = false;
+
 	void Start () 
 	{
-	
+		rigidbody2D.gravityScale = 0.0f;
 	}
 	
-	void Update () 
+	void Update ()
 	{
-		if ( transform.position.x > 400 )
+		if ( Input.GetMouseButtonUp(0) )
 		{
-			transform.position -= new Vector3( 400, 0, 0 );
+			if ( !m_gameStarted )
+			{
+				m_gameStarted = true;
+				rigidbody2D.gravityScale = 0.35f;
+				GameManager.GetInstance().StartGame();
+			}
+			
+			Jump();
 		}
-
-		rigidbody2D.AddForce( new Vector2( 1000, 0 ) );
-		if (Input.GetKeyDown(KeyCode.Z))
+	}
+	
+	void Jump()
+	{
+		if ( topBoundary.position.y > gameObject.transform.position.y )
 		{
-			rigidbody2D.AddForce(new Vector2(0, jumpForce));
+			if ( rigidbody2D )
+			{
+				rigidbody2D.velocity = new Vector2(0, 40);
+			}
 		}
-
+	}
+	
+	void OnTriggerEnter2D( Collider2D collider )
+	{
+		Die();
+		GameManager.GetInstance().GameOver();
 	}
 
-	void FixedUpdate()
+	void Die()
 	{
-		Physics2D.IgnoreLayerCollision( LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Land"), rigidbody2D.velocity.y > 0 );
-	}
-
-	void OnCollisionEnter2D( Collision2D collision )
-	{
-		if ( gameObject.transform.position.y < collision.gameObject.transform.position.y )
-		{
-			Debug.Log ("test");
-			collision.gameObject.collider2D.enabled= false;
-		}
-
+		Destroy (rigidbody2D);
 	}
 }

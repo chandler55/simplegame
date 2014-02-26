@@ -410,7 +410,7 @@ public class tk2dUIManager : MonoBehaviour
         if (isPrimaryTouchFound || isSecondaryTouchFound) //focus touch found
         {
             hitUIItem = RaycastForUIItem(resultTouch.position);
-
+			
             if (resultTouch.phase == TouchPhase.Began)
             {
                 if (pressedUIItem != null)
@@ -651,10 +651,13 @@ public class tk2dUIManager : MonoBehaviour
 
     tk2dUIItem RaycastForUIItem( Vector2 screenPos ) {
         int cameraCount = sortedCameras.Count;
+
         for (int i = 0; i < cameraCount; ++i) {
             tk2dUICamera currCamera = sortedCameras[i];
             ray = currCamera.HostCamera.ScreenPointToRay( screenPos );
+			
             if (Physics.Raycast( ray, out hit, currCamera.HostCamera.farClipPlane, currCamera.FilteredMask )) {
+				
                 return hit.collider.GetComponent<tk2dUIItem>();
             }
         }
