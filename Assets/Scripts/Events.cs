@@ -3,6 +3,13 @@ using System.Collections;
 
 public class Events 
 {
+	public class PlayerHit : BaseEvent
+	{
+		public PlayerHit() 
+		{
+		}
+	}
+
 	public class GameOverEvent : BaseEvent 
 	{
 		public GameOverEvent() 

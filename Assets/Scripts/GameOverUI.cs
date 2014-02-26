@@ -22,9 +22,6 @@ public class GameOverUI : MonoBehaviour, IEventListener
 		EventManager.Instance.AttachListener(this, "GameOverEvent", this.HandleGameOverEvent);
 		EventManager.Instance.AttachListener(this, "StartGameEvent", this.HandleStartGameEvent);
 		EventManager.Instance.AttachListener(this, "RestartGameEvent", this.HandleRestartGameEvent);
-		
-		
-		
 	}
 	
 	// Update is called once per frame
@@ -63,11 +60,12 @@ public class GameOverUI : MonoBehaviour, IEventListener
 
 	bool HandleRestartGameEvent( IEvent evt )
 	{
+		restartButton.SetActive( false );
 		return false;
 	}
 
 	public void RestartGame()
-	{
+	{	
 		EventManager.Instance.QueueEvent( new Events.RestartGameEvent() );
 	}
 }

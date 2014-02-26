@@ -9,14 +9,15 @@ public class Hiscore : MonoBehaviour, IEventListener
 	// Use this for initialization
 	void Start () 
 	{
-		UpdateHiscore(0);
+		UpdateHiscore( PlayerPrefs.GetInt("highscore", 0) );
 
 		EventManager.Instance.AttachListener(this, "ScoreEvent", HandleScoreEvent );
 		
 	}
 
-	void OnDisable()
+	void OnDestroy()
 	{
+		PlayerPrefs.SetInt("highscore", highscore);
 		if ( EventManager.Instance )
 		{
 			EventManager.Instance.DetachListener(this);

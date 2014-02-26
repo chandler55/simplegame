@@ -5,6 +5,7 @@ public class RockPair : MonoBehaviour
 {
 	public tk2dSprite rockTop;
 	public tk2dSprite rockBottom;
+	public AudioSource	coinSound;
 
 	private float 	rockTopMin = 38.0f;
 	private float 	rockTopMax = 13.0f;
@@ -24,10 +25,15 @@ public class RockPair : MonoBehaviour
 	{
 		if ( !m_pointConsumed )
 		{
-			if ( Player.GetInstance().gameObject.transform.position.x > gameObject.transform.position.x )
+			if ( Player.GetInstance() && Player.GetInstance().gameObject.transform.position.x > gameObject.transform.position.x )
 			{
 				EventManager.Instance.QueueEvent(new Events.IncrementScore() );
 				m_pointConsumed = true;
+
+				if ( coinSound )
+				{
+					coinSound.Play();
+				}
 			}
 		}
 	}

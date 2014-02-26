@@ -12,18 +12,12 @@ public class Score : MonoBehaviour, IEventListener
 		EventManager.Instance.AttachListener(this, "GameOverEvent", HandleGameOverEvent );
 	}
 
-	void OnDisable()
+	void OnDestroy()
 	{
 		if ( EventManager.Instance )
 		{
 			EventManager.Instance.DetachListener(this);
 		}
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-	
 	}
 
 	void IncrementScore()
@@ -34,6 +28,8 @@ public class Score : MonoBehaviour, IEventListener
 		{
 			textMesh.text = m_score.ToString();
 		}
+
+		EventManager.Instance.QueueEvent( new Events.ScoreEvent(m_score) );
 	}
 
 	bool HandleIncrementScore( IEvent evt )

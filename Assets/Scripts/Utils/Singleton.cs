@@ -9,7 +9,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 	{ 
 		if (!s_Instance)
 		{
-			Debug.LogError ("Unable to find " + typeof (T).Name + ". Is it in the scene?");
+			//Debug.LogError ("Unable to find " + typeof (T).Name + ". Is it in the scene?");
 		}
 		return s_Instance;
 	}
