@@ -14,7 +14,6 @@ public class Player : Singleton<Player>
 	private Vector3 		m_currentVelocity;
 	
 	private	bool			m_gameStarted = false;
-	private bool			m_hoveringGoingUp = false;
 
 	private Vector3		m_hoveringAnimTop;
 	private Vector3		m_hoveringAnimBottom;
@@ -29,7 +28,6 @@ public class Player : Singleton<Player>
 		smokeEmitter.emit = false;
 
 		// start hovering toward up
-		m_hoveringGoingUp = true;
 		m_tweener = Go.to(gameObject.transform, 0.5f, new GoTweenConfig().position( m_hoveringAnimBottom ).onComplete(c => OnHoverDownComplete() ) );
 	}
 	

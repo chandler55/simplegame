@@ -38,6 +38,10 @@ public class GameOverUI : MonoBehaviour, IEventListener
 
 	bool HandleGameOverEvent( IEvent evt )
 	{
+#if UNITY_ANDROID && !UNITY_EDITOR
+		AdMobPlugin.GetInstance().Show();
+#endif
+
 		Go.to( gameoverText.transform, 0.5f, new GoTweenConfig().position( gameOverTextEndPos.transform.position ).setEaseType(GoEaseType.BounceOut) );
 		Go.to( restartButton.transform, 0.5f, new GoTweenConfig().position( restartButtonEndPos.transform.position ).setEaseType(GoEaseType.BounceOut) );
 		
@@ -66,6 +70,10 @@ public class GameOverUI : MonoBehaviour, IEventListener
 
 	public void RestartGame()
 	{	
+#if UNITY_ANDROID && !UNITY_EDITOR
+		AdMobPlugin.GetInstance().Hide();
+#endif
+
 		EventManager.Instance.QueueEvent( new Events.RestartGameEvent() );
 	}
 }
