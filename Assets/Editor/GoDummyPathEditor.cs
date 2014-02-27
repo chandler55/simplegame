@@ -169,6 +169,7 @@ public class GoDummyPathEditor : Editor
 
 
 		// load from disk
+#if UNITY_EDITOR
 		EditorGUILayout.BeginHorizontal();
 		EditorGUILayout.PrefixLabel( "Load saved path" );
 		if( GUILayout.Button( "Load" ) )
@@ -189,7 +190,7 @@ public class GoDummyPathEditor : Editor
 			}
 		}
 		EditorGUILayout.EndHorizontal();
-
+#endif
 				
 		// node display
 		EditorGUILayout.Space();
